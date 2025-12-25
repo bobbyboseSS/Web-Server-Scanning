@@ -101,7 +101,7 @@ ROBOTS_TXT_REGEX = r"(?:Allow|Disallow): /(.*)"
 
 UNKNOWN = "unknown"
 
-TMP_PATH = "/tmp/dirsearch"
+TMP_PATH = "/tmp/Web-Scanner"
 
 DUMMY_DOMAIN = "example.com"
 

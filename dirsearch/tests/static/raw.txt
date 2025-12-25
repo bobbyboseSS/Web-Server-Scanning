@@ -1,4 +1,4 @@
 GET / HTTP/1.1
 Host: google.com
-User-Agent: dirsearch
+User-Agent: Web-Scanner
 Accept: */*

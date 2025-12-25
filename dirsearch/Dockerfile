@@ -12,7 +12,7 @@ RUN apk add \
     libffi-dev
 
 RUN pip install -r requirements.txt
-RUN chmod +x dirsearch.py
+RUN chmod +x Web-Scanner.py
 
-ENTRYPOINT ["./dirsearch.py"]
+ENTRYPOINT ["./Web-Scanner.py"]
 CMD ["--help"]

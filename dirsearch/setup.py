@@ -12,23 +12,23 @@ current_dir = os.path.abspath(os.path.dirname(__file__))
 with io.open(os.path.join(current_dir, "README.md"), encoding="utf-8") as fd:
     desc = fd.read()
 
-env_dir = tempfile.mkdtemp(prefix="dirsearch-install-")
-shutil.copytree(os.path.abspath(os.getcwd()), os.path.join(env_dir, "dirsearch"))
+env_dir = tempfile.mkdtemp(prefix="Web-Scanner-install-")
+shutil.copytree(os.path.abspath(os.getcwd()), os.path.join(env_dir, "Web-Scanner"))
 
 os.chdir(env_dir)
 
 setuptools.setup(
-    name="dirsearch",
+    name="Web-Scanner",
     version=VERSION,
     author="Mauro Soria",
     author_email="maurosoria@protonmail.com",
     description="Advanced web path scanner",
     long_description=desc,
     long_description_content_type="text/markdown",
-    url="https://github.com/maurosoria/dirsearch",
+    url="https://github.com/maurosoria/Web-Scanner",
     packages=setuptools.find_packages(),
-    entry_points={"console_scripts": ["dirsearch=dirsearch.dirsearch:main"]},
-    package_data={"dirsearch": ["*", "db/*"]},
+    entry_points={"console_scripts": ["Web-Scanner=Web-Scanner.Web-Scanner:main"]},
+    package_data={"Web-Scanner": ["*", "db/*"]},
     include_package_data=True,
     python_requires=">=3.9",
     install_requires=get_dependencies(),

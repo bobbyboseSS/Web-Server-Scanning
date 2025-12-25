@@ -36,7 +36,7 @@ from lib.utils.file import FileUtils
 
 
 # Get ignore paths for status codes.
-# Reference: https://github.com/maurosoria/dirsearch#Blacklist
+# Reference: https://github.com/maurosoria/Web-Scanner#Blacklist
 def get_blacklists() -> dict[int, Dictionary]:
     blacklists = {}
 
@@ -100,14 +100,14 @@ class Dictionary:
         """
         Dictionary.generate() behaviour
 
-        Classic dirsearch wordlist:
+        Classic Web-Scanner wordlist:
           1. If %EXT% keyword is present, append one with each extension REPLACED.
           2. If the special word is no present, append line unmodified.
 
         Forced extensions wordlist (NEW):
           This type of wordlist processing is a mix between classic processing
           and DirBuster processing.
-              1. If %EXT% keyword is present in the line, immediately process as "classic dirsearch" (1).
+              1. If %EXT% keyword is present in the line, immediately process as "classic Web-Scanner" (1).
               2. If the line does not include the special word AND is NOT terminated by a slash,
                 append one with each extension APPENDED (line.ext) and ONLY ONE with a slash.
               3. If the line does not include the special word and IS ALREADY terminated by slash,
@@ -125,7 +125,7 @@ class Dictionary:
                 if not self.is_valid(line):
                     continue
 
-                # Classic dirsearch wordlist processing (with %EXT% keyword)
+                # Classic Web-Scanner wordlist processing (with %EXT% keyword)
                 if EXTENSION_TAG in line.lower():
                     for extension in options["extensions"]:
                         newline = re_ext_tag.sub(extension, line)

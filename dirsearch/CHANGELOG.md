@@ -141,18 +141,18 @@
 ## 0.2.0 - January 31, 2014
 - Initial public release
 
-[Unreleased]: https://github.com/maurosoria/dirsearch/tree/master
-[0.4.3]: https://github.com/maurosoria/dirsearch/tree/v0.4.3
-[0.4.2]: https://github.com/maurosoria/dirsearch/tree/v0.4.2
-[0.4.1]: https://github.com/maurosoria/dirsearch/tree/v0.4.1
-[0.4.0]: https://github.com/maurosoria/dirsearch/tree/v0.4.0
-[0.3.9]: https://github.com/maurosoria/dirsearch/tree/v0.3.9
-[0.3.8]: https://github.com/maurosoria/dirsearch/tree/v0.3.8
-[0.3.7]: https://github.com/maurosoria/dirsearch/tree/v0.3.7
-[0.3.6]: https://github.com/maurosoria/dirsearch/tree/v0.3.6
-[0.3.5]: https://github.com/maurosoria/dirsearch/tree/v0.3.5
-[0.3.0]: https://github.com/maurosoria/dirsearch/tree/v0.3.0
-[0.2.7]: https://github.com/maurosoria/dirsearch/tree/v0.2.7
-[0.2.6]: https://github.com/maurosoria/dirsearch/tree/v0.2.6
-[0.2.5]: https://github.com/maurosoria/dirsearch/tree/v0.2.5
-[0.2.4]: https://github.com/maurosoria/dirsearch/tree/v0.2.4
+[Unreleased]: https://github.com/maurosoria/Web-Scanner/tree/master
+[0.4.3]: https://github.com/maurosoria/Web-Scanner/tree/v0.4.3
+[0.4.2]: https://github.com/maurosoria/Web-Scanner/tree/v0.4.2
+[0.4.1]: https://github.com/maurosoria/Web-Scanner/tree/v0.4.1
+[0.4.0]: https://github.com/maurosoria/Web-Scanner/tree/v0.4.0
+[0.3.9]: https://github.com/maurosoria/Web-Scanner/tree/v0.3.9
+[0.3.8]: https://github.com/maurosoria/Web-Scanner/tree/v0.3.8
+[0.3.7]: https://github.com/maurosoria/Web-Scanner/tree/v0.3.7
+[0.3.6]: https://github.com/maurosoria/Web-Scanner/tree/v0.3.6
+[0.3.5]: https://github.com/maurosoria/Web-Scanner/tree/v0.3.5
+[0.3.0]: https://github.com/maurosoria/Web-Scanner/tree/v0.3.0
+[0.2.7]: https://github.com/maurosoria/Web-Scanner/tree/v0.2.7
+[0.2.6]: https://github.com/maurosoria/Web-Scanner/tree/v0.2.6
+[0.2.5]: https://github.com/maurosoria/Web-Scanner/tree/v0.2.5
+[0.2.4]: https://github.com/maurosoria/Web-Scanner/tree/v0.2.4

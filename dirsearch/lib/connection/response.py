@@ -67,7 +67,7 @@ class BaseResponse:
 
     def __hash__(self) -> int:
         # Hash the static parts of the response only.
-        # See https://github.com/maurosoria/dirsearch/pull/1436#issuecomment-2476390956
+        # See https://github.com/maurosoria/Web-Scanner/pull/1436#issuecomment-2476390956
         body = replace_from_all_encodings(self.content, self.full_path.split("#")[0], "") if self.content else self.body
         return hash((self.status, body))
 

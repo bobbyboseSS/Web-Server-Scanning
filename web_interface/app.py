@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Final Unified Web-ScannerFlask Application
-Single Flask application with dirsearch modules integrated directly
+Single Flask application with Web-Scanner modules integrated directly
 No wrapper, no WebSocket - everything embedded within Flask functions
 """
 
@@ -18,7 +18,7 @@ from typing import Any, Dict, List
 from flask import Flask, render_template, request, jsonify, send_from_directory, redirect
 from werkzeug.utils import secure_filename
 
-# Add dirsearch to path
+# Add Web-Scanner to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 # Import database
@@ -30,10 +30,10 @@ def setup_logging():
     log_dir = os.path.join(os.path.dirname(__file__), 'logs')
     os.makedirs(log_dir, exist_ok=True)
     
-    log_file = os.path.join(log_dir, f'dirsearch_web_{datetime.now().strftime("%Y%m%d")}.log')
+    log_file = os.path.join(log_dir, f'Web-Scanner_web_{datetime.now().strftime("%Y%m%d")}.log')
     
     # Create logger
-    app_logger = logging.getLogger('dirsearch_web')
+    app_logger = logging.getLogger('Web-Scanner_web')
     app_logger.setLevel(logging.DEBUG)
     
     # Remove existing handlers
@@ -65,10 +65,10 @@ logger.info("Starting Web-ScannerWeb Interface - Direct Scan Mode")
 
 # Flask app
 app = Flask(__name__)
-app.secret_key = 'dirsearch_final_app_secret_key_2025'
+app.secret_key = 'Web-Scanner_final_app_secret_key_2025'
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(os.path.dirname(__file__), "dirsearch.db")}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(os.path.dirname(__file__), "Web-Scanner.db")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Global scan storage
@@ -125,11 +125,11 @@ class DirectScanner:
             self.log_debug("Step 1: Importing required modules")
             
             # Import basic data structures
-            from dirsearch.lib.core.data import options, blacklists
+            from Web-Scanner.lib.core.data import options, blacklists
             self.log_debug("Imported options and blacklists")
             
             # Import settings
-            from dirsearch.lib.core.settings import SCRIPT_PATH
+            from Web-Scanner.lib.core.settings import SCRIPT_PATH
             self.log_debug("Imported settings")
             
             # Setup minimal options
@@ -158,8 +158,8 @@ class DirectScanner:
             
             # Import and setup dictionary
             self.log_debug("Step 2: Setting up dictionary")
-            from dirsearch.lib.core.dictionary import Dictionary
-            from dirsearch.lib.utils.file import FileUtils
+            from Web-Scanner.lib.core.dictionary import Dictionary
+            from Web-Scanner.lib.utils.file import FileUtils
             
             wordlist_path = os.path.join(SCRIPT_PATH, options["wordlists"])
             if not os.path.exists(wordlist_path):
@@ -171,7 +171,7 @@ class DirectScanner:
             
             # Import and setup requester
             self.log_debug("Step 3: Setting up requester")
-            from dirsearch.lib.connection.requester import Requester
+            from Web-Scanner.lib.connection.requester import Requester
             
             self.requester = Requester()
             self.requester.set_url(self.config["url"])

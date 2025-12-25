@@ -28,7 +28,7 @@ from lib.core.settings import OPTIONS_FILE
 from lib.parse.config import ConfigParser
 
 if sys.version_info < (3, 9):
-    sys.stderr.write("Sorry, dirsearch requires Python 3.9 or higher\n")
+    sys.stderr.write("Sorry, Web-Scanner requires Python 3.9 or higher\n")
     sys.exit(1)
 
 # silence pkg_resources deprecation warnings
@@ -45,7 +45,7 @@ def main():
             check_dependencies()
         except (DistributionNotFound, VersionConflict):
             option = input("Missing required dependencies to run.\n"
-                           "Do you want dirsearch to automatically install them? [Y/n] ")
+                           "Do you want Web-Scanner to automatically install them? [Y/n] ")
 
             if option.lower() == 'y':
                 print("Installing required dependencies...")
@@ -53,7 +53,7 @@ def main():
                 try:
                     install_dependencies()
                 except FailedDependenciesInstallation:
-                    sys.stderr.write("Failed to install dirsearch dependencies, try doing it manually.\n")
+                    sys.stderr.write("Failed to install Web-Scanner dependencies, try doing it manually.\n")
                     sys.exit(1)
             else:
                 # Do not check for dependencies in the future

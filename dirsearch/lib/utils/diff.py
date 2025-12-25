@@ -50,7 +50,7 @@ class DynamicContentParser:
 
         i = -1
         splitted_content = content.split()
-        # Allow one miss, see https://github.com/maurosoria/dirsearch/issues/1279
+        # Allow one miss, see https://github.com/maurosoria/Web-Scanner/issues/1279
         misses = 0
         for pattern in self._static_patterns:
             try:

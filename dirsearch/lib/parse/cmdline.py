@@ -30,7 +30,7 @@ from lib.utils.common import get_config_file
 def parse_arguments() -> Values:
     usage = "Usage: %prog [-u|--url] target [-e|--extensions] extensions [options]"
     epilog = "See 'config.ini' for the example configuration file"
-    parser = OptionParser(usage=usage, epilog=epilog, version=f"dirsearch v{VERSION}")
+    parser = OptionParser(usage=usage, epilog=epilog, version=f"Web-Scanner v{VERSION}")
 
     # Mandatory arguments
     mandatory = OptionGroup(parser, "Mandatory")
@@ -76,7 +76,7 @@ def parse_arguments() -> Values:
         action="store",
         dest="config",
         metavar="PATH",
-        help="Path to configuration file (Default: 'DIRSEARCH_CONFIG' environment variable, otherwise 'config.ini')",
+        help="Path to configuration file (Default: 'Web-Scanner_CONFIG' environment variable, otherwise 'config.ini')",
         default=get_config_file(),
     )
 
@@ -101,7 +101,7 @@ def parse_arguments() -> Values:
         "--force-extensions",
         action="store_true",
         dest="force_extensions",
-        help="Add extensions to the end of every wordlist entry. By default dirsearch only replaces the %EXT% keyword with extensions",
+        help="Add extensions to the end of every wordlist entry. By default Web-Scanner only replaces the %EXT% keyword with extensions",
     )
     dictionary.add_option(
         "--overwrite-extensions",

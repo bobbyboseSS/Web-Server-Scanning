@@ -37,7 +37,7 @@ from lib.utils.file import FileUtils
 
 
 def get_config_file():
-    return os.environ.get("DIRSEARCH_CONFIG") or FileUtils.build_path(SCRIPT_PATH, "config.ini")
+    return os.environ.get("Web-Scanner_CONFIG") or FileUtils.build_path(SCRIPT_PATH, "config.ini")
 
 
 def safequote(string_: str) -> str:

@@ -32,7 +32,7 @@ class XMLReport(FileReportMixin, BaseReport):
     __extension__ = "xml"
 
     def new(self):
-        return ET.Element("dirsearchscan", args=COMMAND, time=START_TIME)
+        return ET.Element("Web-Scannerscan", args=COMMAND, time=START_TIME)
 
     def parse(self, file):
         return ET.parse(file).getroot()
