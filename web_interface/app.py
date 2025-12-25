@@ -71,6 +71,11 @@ app.secret_key = 'Web-Scanner_final_app_secret_key_2025'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(os.path.dirname(__file__), "Web-Scanner.db")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+try:
+    init_database(app)
+except Exception as e:
+    logger.error(f"Database initialization failed: {e}", exc_info=True)
+
 # Global scan storage
 active_scans: Dict[str, 'DirectScanner'] = {}
 scan_history: List[Dict[str, Any]] = []
