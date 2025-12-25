@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Database models for Dirsearch Web Interface - SQLAlchemy
+Database models for Web-ScannerWeb Interface - SQLAlchemy
 """
 
 import os

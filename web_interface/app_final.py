@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Final Unified Dirsearch Flask Application
+Final Unified Web-ScannerFlask Application
 Single Flask application with dirsearch modules integrated directly
 No wrapper, no WebSocket - everything embedded within Flask functions
 """
@@ -61,7 +61,7 @@ def setup_logging():
 
 # Initialize logger
 logger = setup_logging()
-logger.info("Starting Dirsearch Web Interface - Direct Scan Mode")
+logger.info("Starting Web-ScannerWeb Interface - Direct Scan Mode")
 
 # Flask app
 app = Flask(__name__)
