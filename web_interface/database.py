@@ -109,10 +109,23 @@ def init_database(app):
 
 def load_wordlists():
     """Load all wordlists from the db folder"""
-    db_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'dirsearch', 'db')
-    
-    if not os.path.exists(db_path):
-        print(f"Warning: db directory not found at {db_path}")
+    project_root = os.path.dirname(os.path.dirname(__file__))
+
+    db_candidates = [
+        os.path.join(project_root, 'dirsearch', 'db'),
+        os.path.join(project_root, '.research', 'db'),
+        os.path.join(project_root, 'research', 'db'),
+        os.path.join(project_root, 'db'),
+    ]
+
+    db_path = None
+    for candidate in db_candidates:
+        if os.path.isdir(candidate):
+            db_path = candidate
+            break
+
+    if db_path is None:
+        print(f"Warning: db directory not found. Tried: {db_candidates}")
         return
     
     # Clear existing wordlists
