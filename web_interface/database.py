@@ -109,7 +109,7 @@ def init_database(app):
 
 def load_wordlists():
     """Load all wordlists from the db folder"""
-    db_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Web-Scanner', 'db')
+    db_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'dirsearch', 'db')
     
     if not os.path.exists(db_path):
         print(f"Warning: db directory not found at {db_path}")
