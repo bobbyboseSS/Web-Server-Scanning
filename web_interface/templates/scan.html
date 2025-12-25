@@ -783,13 +783,21 @@
                 if (data.status === 'success') {
                     const select = document.getElementById('wordlist');
                     select.innerHTML = '';
-                    
-                    data.wordlists.forEach(wordlist => {
+
+                    if (Array.isArray(data.wordlists) && data.wordlists.length > 0) {
+                        data.wordlists.forEach(wordlist => {
+                            const option = document.createElement('option');
+                            option.value = wordlist.path;
+                            option.textContent = `${wordlist.name} (${formatBytes(wordlist.size)})`;
+                            select.appendChild(option);
+                        });
+                    } else {
                         const option = document.createElement('option');
-                        option.value = wordlist.path;
-                        option.textContent = `${wordlist.name} (${formatBytes(wordlist.size)})`;
+                        option.value = 'db/dicc.txt';
+                        option.textContent = 'Default (dicc.txt)';
                         select.appendChild(option);
-                    });
+                        console.error('No wordlists returned from /api/wordlists. Check DB init + wordlist loading on server.');
+                    }
                 }
             } catch (error) {
                 console.error('Error loading wordlists:', error);
