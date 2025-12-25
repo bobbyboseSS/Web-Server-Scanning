@@ -22,7 +22,7 @@ from werkzeug.utils import secure_filename
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 # Import database
-from database import init_database, save_scan_to_database, get_scan_history, get_scan_results_from_db, get_wordlists, db
+from database import init_database, reload_wordlists, save_scan_to_database, get_scan_history, get_scan_results_from_db, get_wordlists, db
 
 # Setup logging
 def setup_logging():
@@ -382,6 +382,28 @@ def get_wordlists_function():
         return jsonify({
             "status": "error",
             "message": str(e)
+        }), 500
+
+
+@app.route('/api/wordlists/reload', methods=['POST'])
+def reload_wordlists_function():
+    try:
+        result = reload_wordlists()
+        if result.get('ok'):
+            return jsonify({
+                'status': 'success',
+                'result': result,
+            })
+
+        return jsonify({
+            'status': 'error',
+            'result': result,
+        }), 500
+    except Exception as e:
+        logger.error(f"Error reloading wordlists: {e}", exc_info=True)
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
         }), 500
 
 @app.route('/api/scan/list', methods=['GET'])

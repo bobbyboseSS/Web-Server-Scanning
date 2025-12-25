@@ -179,6 +179,94 @@ def load_wordlists():
         db.session.rollback()
         print(f"Error saving wordlists to database: {e}")
 
+
+def reload_wordlists():
+    project_root = os.path.dirname(os.path.dirname(__file__))
+
+    db_candidates = [
+        os.path.join(project_root, 'dirsearch', 'db'),
+        os.path.join(project_root, '.research', 'db'),
+        os.path.join(project_root, 'research', 'db'),
+        os.path.join(project_root, 'db'),
+    ]
+
+    db_path = None
+    for candidate in db_candidates:
+        if os.path.isdir(candidate):
+            db_path = candidate
+            break
+
+    if db_path is None:
+        return {
+            'ok': False,
+            'reason': 'db_directory_not_found',
+            'tried': db_candidates,
+        }
+
+    files_found = 0
+    inserted = 0
+    errors = []
+
+    Wordlist.query.delete()
+
+    for root, _, files in os.walk(db_path):
+        for filename in files:
+            if not filename.lower().endswith('.txt'):
+                continue
+
+            files_found += 1
+
+            file_path = os.path.join(root, filename)
+            rel_path = os.path.relpath(file_path, db_path)
+            stored_path = os.path.join('db', rel_path).replace('\\', '/')
+
+            try:
+                file_size = os.path.getsize(file_path)
+
+                entries_count = 0
+                try:
+                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                        entries_count = sum(1 for _ in f)
+                except Exception:
+                    entries_count = None
+
+                display_name = os.path.splitext(rel_path)[0].replace('\\', '/').replace('_', ' ')
+
+                wordlist = Wordlist(
+                    name=display_name,
+                    path=stored_path,
+                    size=file_size,
+                    entries_count=entries_count,
+                    description=f"Wordlist from {stored_path}"
+                )
+                db.session.add(wordlist)
+                inserted += 1
+            except Exception as e:
+                errors.append({'path': stored_path, 'error': str(e)})
+
+    try:
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return {
+            'ok': False,
+            'reason': 'db_commit_failed',
+            'db_path': db_path,
+            'files_found': files_found,
+            'inserted': inserted,
+            'errors': errors,
+            'commit_error': str(e),
+        }
+
+    return {
+        'ok': True,
+        'db_path': db_path,
+        'files_found': files_found,
+        'inserted': inserted,
+        'errors': errors,
+        'count_in_db': Wordlist.query.count(),
+    }
+
 def save_scan_to_database(scanner):
     """Save scan results to database"""
     try:
