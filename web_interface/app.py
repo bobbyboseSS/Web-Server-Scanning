@@ -22,7 +22,7 @@ from werkzeug.utils import secure_filename
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 # Import database
-from database import init_database, reload_wordlists, save_scan_to_database, get_scan_history, get_scan_results_from_db, get_wordlists, db
+from .database import init_database, reload_wordlists, save_scan_to_database, get_scan_history, get_scan_results_from_db, get_wordlists, db
 
 # Setup logging
 def setup_logging():
