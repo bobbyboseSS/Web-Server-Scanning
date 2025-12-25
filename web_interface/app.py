@@ -385,7 +385,7 @@ def get_wordlists_function():
         }), 500
 
 
-@app.route('/api/wordlists/reload', methods=['POST'])
+@app.route('/api/wordlists/reload', methods=['GET', 'POST'])
 def reload_wordlists_function():
     try:
         result = reload_wordlists()
